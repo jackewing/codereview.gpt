@@ -1,7 +1,6 @@
 'use strict';
 
 import './styles.css';
-import { parse } from 'node-html-parser';
 import { ChatGPTAPI } from 'chatgpt';
 
 var parsediff = require('parse-diff');
@@ -64,7 +63,35 @@ async function callChatGPT(messages, callback, onDone) {
 
   const api = new ChatGPTAPI({
     apiKey: apiKey,
-    systemMessage: `You are a programming code change reviewer, provide feedback on the code changes given. Do not introduce yourselves.`
+    completionParams: {
+      model: 'gpt-4',
+      temperature: 0.5,
+      top_p: 0.8
+    },
+    systemMessage: `Your name is sénor dev, you are an autoregressive language model that has been fine-tuned with instruction-tuning and RLHF.
+    You carefully provide accurate, factual, thoughtful, nuanced answers, and are brilliant at reasoning.
+    If you think there might not be a correct answer, you say so.
+    Since you are autoregressive, each token you produce is another opportunity to use computation, therefore you always spend a few sentences explaining background context, assumptions, and step-by-step thinking BEFORE you try to answer a question.
+    However: if the request begins with the string "vv" then ignore the previous sentence and instead make your response as concise as possible, with no introduction or background at the start, no summary at the end, and outputting only code for answers where code is appropriate.
+    Your purpose is to act as a highly experienced
+    software engineer and provide a thorough review of the code hunks
+    and suggest code snippets to improve key areas such as:
+      - Logic
+      - Security
+      - Performance
+      - Data races
+      - Consistency
+      - Error handling
+      - Maintainability
+      - Modularity
+      - Complexity
+      - Optimization
+      - Best practices: DRY, SOLID, KISS
+
+    Do not comment on minor code style issues, missing
+    comments/documentation. Identify and resolve significant
+    concerns to improve overall code quality while deliberately
+    disregarding minor issues.`
   })
 
   let res
@@ -220,9 +247,9 @@ async function run() {
   let title = tab.title
 
   // Simple verification if it would be a self-hosted GitLab instance.
-  // We verify if there is a meta tag present with the content "GitLab". 
+  // We verify if there is a meta tag present with the content "GitLab".
   let isGitLabResult = (await chrome.scripting.executeScript({
-    target:{tabId: tab.id, allFrames: true}, 
+    target:{tabId: tab.id, allFrames: true},
     func: () => { return document.querySelectorAll('meta[content="GitLab"]').length }
   }))[0];
 
@@ -239,10 +266,10 @@ async function run() {
     // The description of the author of the change
     // Fetch it by running a querySelector script specific to GitHub on the active tab
     const contextExternalResult = (await chrome.scripting.executeScript({
-      target:{tabId: tab.id, allFrames: true}, 
+      target:{tabId: tab.id, allFrames: true},
       func: () => { return document.querySelector('.markdown-body').textContent }
     }))[0];
-    
+
     if ("result" in contextExternalResult) {
       context = contextExternalResult.result;
     }
@@ -253,7 +280,7 @@ async function run() {
     // The description of the author of the change
     // Fetch it by running a querySelector script specific to GitLab on the active tab
     const contextExternalResult = (await chrome.scripting.executeScript({
-      target:{tabId: tab.id, allFrames: true}, 
+      target:{tabId: tab.id, allFrames: true},
       func: () => { return document.querySelector('.description textarea').getAttribute('data-value') }
     }))[0];
 
@@ -269,7 +296,7 @@ async function run() {
       error = 'Only GitHub or GitLab (SaaS & self-hosted) are supported.'
     }
   }
- 
+
   if (error != null) {
     document.getElementById('result').innerHTML = error
     inProgress(false, true, false);

@@ -1,15 +1,15 @@
-# codereview.gpt
+# Señor Dev
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/sturdy-dev/codereview.gpt/main/public/icons/icon_128.png">
+  <img src="https://raw.githubusercontent.com/sturdy-dev/Señor Dev/main/public/icons/icon_128.png">
 </p>
 <p align='center'>
     Review GitHub Pull Requests or GitLab Merge Requests using <a href="https://chat.openai.com" target="_blank">ChatGPT</a>.
 </p>
 <p align='center'>
-    <a href="https://github.com/sturdy-dev/codereview.gpt/blob/main/LICENSE.txt">
+    <a href="https://github.com/sturdy-dev/Señor Dev/blob/main/LICENSE.txt">
         <img alt="GitHub"
-        src="https://img.shields.io/github/license/sturdy-dev/codereview.gpt">
+        src="https://img.shields.io/github/license/sturdy-dev/Señor Dev">
     </a>
     <a href="https://chrome.google.com/webstore/detail/codereviewgpt/amdfidcajdihmbhmmgohhkoaijpkocdn">
       <img alt="Chrome Web Store"
@@ -31,7 +31,7 @@ Here's an example output for [this](https://github.com/sturdy-dev/semantic-code-
 
 https://user-images.githubusercontent.com/4030927/207372123-46d7ee8c-bd3e-4272-8ccb-4639f9f71458.mp4
 
-![example screenshot](https://raw.githubusercontent.com/sturdy-dev/codereview.gpt/main/docs/codereview_gpt_screenshot_1.png)
+![example screenshot](https://raw.githubusercontent.com/sturdy-dev/Señor Dev/main/docs/codereview_gpt_screenshot_1.png)
 
 ## Usage
 
@@ -82,11 +82,11 @@ https://user-images.githubusercontent.com/4030927/207372123-46d7ee8c-bd3e-4272-8
 
 ## Installation
 
-You can install `codereview.gpt` from the [Chrome Web Store](https://chrome.google.com/webstore/detail/codereviewgpt/amdfidcajdihmbhmmgohhkoaijpkocdn) or build it from source locally.
+You can install `Señor Dev` from the [Chrome Web Store](https://chrome.google.com/webstore/detail/codereviewgpt/amdfidcajdihmbhmmgohhkoaijpkocdn) or build it from source locally.
 
 ### From the Chrome Web Store (recommended)
 
-Go to the [extension page](https://chrome.google.com) at the Chrome Web Store and add `codereview.gpt`.
+Go to the [extension page](https://chrome.google.com) at the Chrome Web Store and add `Señor Dev`.
 
 ### From source
 
@@ -115,4 +115,4 @@ This project is inspired by [clmnin/summarize.site](https://github.com/clmnin/su
 
 ## License
 
-codereview.gpt is distributed under the [MIT](LICENSE.txt) license.
+Señor Dev is distributed under the [MIT](LICENSE.txt) license.
